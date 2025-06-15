@@ -2,6 +2,8 @@ package com.java.backendus.domain.member;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
 	private final UserRepository userRepository;
@@ -9,7 +11,7 @@ public class UserService {
 	public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
-
+	@Transactional
 	public void addUserPoint(SavePointReqDto dto){
 		int point = calculatePoint(dto.getPrice());
 		userRepository.addPointByUserId(dto.getUserId(), point);
