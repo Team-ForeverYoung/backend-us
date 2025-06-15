@@ -7,13 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java.backendus.global.code.RestApiResponse;
 
-@Controller
-@RestController("api/v1/point_us")
+@RestController
+@RequestMapping("/api/v1/point_us")
 public class UserController {
 	private final UserService userService;
 	private static Logger log = LoggerFactory.getLogger(UserController.class);
