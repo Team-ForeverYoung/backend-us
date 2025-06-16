@@ -32,7 +32,7 @@ public class UserController {
 		return ResponseEntity.ok(restApiResponse);
 	}
 
-	@GetMapping
+	@GetMapping("/{userId}")
 	public ResponseEntity<RestApiResponse> checkPoint(@PathVariable("userId")Long userId){
 		log.info("들어오셨나 ?");
 		int point = userService.checkUserPoint(userId);
