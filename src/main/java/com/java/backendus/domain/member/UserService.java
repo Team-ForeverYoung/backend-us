@@ -1,5 +1,7 @@
 package com.java.backendus.domain.member;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -7,13 +9,14 @@ import jakarta.transaction.Transactional;
 @Service
 public class UserService {
 	private final UserRepository userRepository;
-
+	private static Logger log = LoggerFactory.getLogger(UserService.class);
 	public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 	@Transactional
 	public void addUserPoint(SavePointReqDto dto){
 		int point = calculatePoint(dto.getPrice());
+		log.info(String.valueOf(point));
 		userRepository.addPointByUserId(dto.getUserId(), point);
 	}
 
