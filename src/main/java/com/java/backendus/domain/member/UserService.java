@@ -17,6 +17,7 @@ public class UserService {
 	public void addUserPoint(SavePointReqDto dto){
 		int point = calculatePoint(dto.getPrice());
 		log.info(String.valueOf(point));
+		log.info(String.valueOf(dto.getUserId()));
 		userRepository.addPointByUserId(dto.getUserId(), point);
 	}
 
