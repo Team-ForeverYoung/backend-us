@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class UserController {
 	}
 
 	@GetMapping
-	public ResponseEntity<RestApiResponse> checkPoint(@RequestParam("userId")Long userId){
+	public ResponseEntity<RestApiResponse> checkPoint(@PathVariable("userId")Long userId){
 		log.info("들어오셨나 ?");
 		int point = userService.checkUserPoint(userId);
 		RestApiResponse restApiResponse = new RestApiResponse(MemberCode.USER_POINT_SAVE_SUCCESS, point);
