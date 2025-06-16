@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class UserController {
 	}
 
 	@PostMapping
-	public ResponseEntity<RestApiResponse> savePoint(SavePointReqDto savePointReqDto){
+	public ResponseEntity<RestApiResponse> savePoint(@RequestBody SavePointReqDto savePointReqDto){
 		log.info("들어오셨나 ?");
 		userService.addUserPoint(savePointReqDto);
 		RestApiResponse restApiResponse = new RestApiResponse(MemberCode.USER_POINT_SAVE_SUCCESS);
